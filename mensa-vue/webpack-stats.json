@@ -1,0 +1,1 @@
+{"status":"error","publicPath":"http://localhost:8080/dist/","error":"ModuleNotFoundError","message":"Module not found: Error: Can't resolve 'vuex' in 'G:\\mensa-online\\mensa-vue\\src\\store'"}
