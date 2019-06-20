@@ -6,7 +6,7 @@
 				<div class="progress-table-wrap">
 					<div class="progress-table">
 						<div class="table-head" >
-							<div class="serial">Meal</div>
+							<div class="country">Meal</div>
 							<div class="country">Description</div>
 							<div class="serial">Price</div>
 							<div class="serial">Calories</div>
@@ -14,7 +14,7 @@
 							<div class="serial">Total</div>
 						</div>
 						<div class="table-row" v-for="(tempVar, index) in tempVars" track-by="$index" :key="index">
-							<div class="serial">{{tempVar.title}}</div>
+							<div class="country">{{tempVar.title}}</div>
 							<div class="country">{{tempVar.description}}</div>
 							<div class="serial">{{tempVar.price}}</div>
 							<div class="serial">{{tempVar.calories}}</div>

@@ -34,6 +34,7 @@ urlpatterns = [
     
     # code for django-vue integration
     # path('', TemplateView.as_view(template_name='index.html')),
+    path('notes/',include('testApp.urls')),
     path('customer/', include('customers.urls')),
     path('menu/',include('menus.urls')),
     path('orders/',include('orders.urls')),

@@ -16,6 +16,7 @@ const routes = [
         component: AppLayout,
         redirect:'index',
         children:[
+            {name: 'testapi',path:'testapi', component: test_api},
             {
                 name:'index',
                 path:'index',
@@ -33,6 +34,7 @@ const routes = [
                 path:'cart',
                 component: cart,
             },
+            
         ]
     }
 

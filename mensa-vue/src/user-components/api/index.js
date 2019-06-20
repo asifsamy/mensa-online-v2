@@ -3,18 +3,18 @@ import axios from 'axios'
 export default{
     fetchMenu (method, params, data){
         if(method === 'post'){
-            return ajax('http://localhost:8000/api/menu/', method, {data})
+            return ajax('http://localhost:8000/menu/menu/', method, {data})
             // return ajax('api/notes/', 'get', null, null)
         }else{
-            return ajax('http://localhost:8000/api/menu/', 'get', {})
+            return ajax('http://localhost:8000/menu/menu/', 'get', {})
         }
     },
     fetchNotes (method, params, data){
         if(method === 'post'){
-            return ajax('http://localhost:8000/api/notes/', method, {data})
+            return ajax('http://localhost:8000/notes/notes/', method, {data})
             // return ajax('api/notes/', 'get', null, null)
         }else{
-            return ajax('http://localhost:8000/api/notes/', 'get', {})
+            return ajax('http://localhost:8000/notes/notes/', 'get', {})
         }
     }
 }

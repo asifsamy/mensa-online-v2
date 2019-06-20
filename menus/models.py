@@ -10,11 +10,13 @@ from django.urls import reverse
 # Create your models here.
 
 CATEGORY_CHOICES = (
-    ("Dish", "Dish"),
-    ("Fruit", "Fruit"),
-    ("Bevarage", "Bevarage"),
+    ("Veg", "Veg"),
+    ("Non-Veg", "Non-Veg"),
+    ("Salads", "Salads"),
+    ("Desserts", "Desserts"),
+    ("Fruits", "Fruits"),
+    ("Beverages", "Beverages"),
     ("Favorite", "Favorite"),
-    ("Desert", "Desert"),
 )
 
 STATUS_CHOICES = (
