@@ -9,6 +9,8 @@ import login from './user-components/login.vue'
 import singup from './user-components/singup.vue'
 import logout from './user-components/logout.vue'
 import settings from './user-components/settings.vue'
+import contact from './user-components/contact.vue'
+import about from './user-components/about.vue'
 
 const routes = [
     // D2. Create the path object which will be used to call the component
@@ -57,6 +59,16 @@ const routes = [
                 name:'settings',
                 path:'settings',
                 component: settings,
+            },
+            {
+                name:'contact',
+                path:'contact',
+                component: contact,
+            },
+            {
+                name:'about',
+                path:'about',
+                component: about,
             },
             
         ]
