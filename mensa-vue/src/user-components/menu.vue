@@ -47,7 +47,6 @@
 						</div>					                               
 					</div>		
 				</div>
-	
 			</div>
 		</section>
     </div>
@@ -60,21 +59,12 @@
 import api from './api/index.js';
 
 export default {
-	// created(){
-	// 	alert('created');
-	// },
-	// updated(){
-	// 	alert('updated');
-	// },
     data () {
     return {
 		menus: [],
 		foodKey:"foodCategory",
 		foodCategories:["All Menu","Veg","Non-Veg","Salads","Fruits","Desserts","Beverages","Favorites"],
 		filter: "All Menu",
-	
-
-		
     }
   },
 	computed:{
