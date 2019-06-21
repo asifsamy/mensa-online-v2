@@ -18,9 +18,9 @@
                             <li><router-link to="/menu">Food Menu</router-link></li>
 				            <li class="menu-has-children sf-with-ul menu-item"><a href="">Profile</a>
                                 <ul>
-                                    <li ><a href="#login" class="sf-with-ul menu-item">Login/Signup</a></li>
-                                    <li><a href="#wallet" class="sf-with-ul menu-item">Wallet</a></li>
-                                    <li class="menu-has-children sf-with-ul menu-item"><router-link to="/settings">Settings</router-link>
+                                    <!-- <li ><a href="#login" class="sf-with-ul menu-item">Login/Signup</a></li> -->
+                                    <li><router-link to="/wallet" class="sf-with-ul menu-item">Wallet</router-link></li>
+                                    <li class="menu-has-children sf-with-ul menu-item"><a href="">Settings</a>
                                         <ul>
                                             <li class="sf-with-ul menu-item"><router-link to="/settings">Personal Info</router-link></li>								
                                             <li><a href="notifications.html" class="sf-with-ul menu-item">Notifications</a></li>

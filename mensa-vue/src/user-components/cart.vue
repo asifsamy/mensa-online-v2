@@ -1,7 +1,7 @@
 <template>
     <div class="whole-wrap">
 		<div class ="container">
-			<div class="section-top-border">
+			<div class="section-top-border"> 
 				<h3 class="mb-30">Orders</h3>
 				<div class="progress-table-wrap">
 					<div class="progress-table">

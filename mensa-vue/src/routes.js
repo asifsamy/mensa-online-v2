@@ -11,6 +11,7 @@ import logout from './user-components/logout.vue'
 import settings from './user-components/settings.vue'
 import contact from './user-components/contact.vue'
 import about from './user-components/about.vue'
+import wallet from './user-components/wallet.vue'
 
 const routes = [
     // D2. Create the path object which will be used to call the component
@@ -69,6 +70,11 @@ const routes = [
                 name:'about',
                 path:'about',
                 component: about,
+            },
+            {
+                name:'wallet',
+                path:'wallet',
+                component: wallet,
             },
             
         ]
