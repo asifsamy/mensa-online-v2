@@ -7,6 +7,7 @@ import AppLayout from './user-components/AppLayout.vue'
 import cart from './user-components/cart.vue'
 import login from './user-components/login.vue'
 import singup from './user-components/singup.vue'
+import logout from './user-components/logout.vue'
 
 const routes = [
     // D2. Create the path object which will be used to call the component
@@ -45,6 +46,11 @@ const routes = [
                 name:'singup',
                 path:'singup',
                 component: singup,
+            },
+            {
+                name:'logout',
+                path:'logout',
+                component: logout,
             },
             
         ]

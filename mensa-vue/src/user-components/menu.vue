@@ -19,7 +19,7 @@
 						{{foodCategory}}
 					</li>
 				</ul>
-				<div class="row grid">
+				<div class="row grid autoHeight">
 					<div 
 						class="col-md-6 all Veg" 
 						v-for="(menu, index) in menus" 
@@ -103,5 +103,7 @@ export default {
 </script>
 
 <style>
-
+.autoHeight{
+	height: auto !important;
+}
 </style>

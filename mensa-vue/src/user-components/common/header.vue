@@ -16,7 +16,7 @@
 				        <ul class="nav-menu">
 				            <li><router-link to="/index">Home</router-link></li>
                             <li><router-link to="/menu">Food Menu</router-link></li>
-				            <li><a href="">Profile</a>
+				            <li class="menu-has-children"><a href="">Profile</a>
                                 <ul>
                                     <li ><a href="#login" class="sf-with-ul menu-item-active">Login/Signup</a></li>
                                     <li><a href="#wallet" class="sf-with-ul menu-item-active">Wallet</a></li>
@@ -25,7 +25,7 @@
                                             <li><a href="personalinfo.html" class="sf-with-ul menu-item-active">Personal Info</a></li>								
                                             <li><a href="notifications.html" class="sf-with-ul menu-item-active">Notifications</a></li>
                                             <li><a href="language.html" class="sf-with-ul menu-item-active">Language</a></li>
-                                            <li><a href="logout.html" class="sf-with-ul menu-item-active">Log Out</a></li>
+                                            <li class="sf-with-ul menu-item-active"><router-link to="/logout">Log Out</router-link></li>
                                         </ul>
                                     </li>			
                                 </ul>
