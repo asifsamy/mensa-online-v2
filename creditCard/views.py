@@ -7,8 +7,8 @@ Import the class from serializer file
 
 """
 
-from wallets.models import Wallet
-from wallets.serializers import WalletSerializer
+from creditCard.models import CreditCard
+from creditCard.serializers import CreditCardSerializer
 from rest_framework import viewsets
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated
@@ -19,12 +19,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # Allowing any user to access the view
 @permission_classes((AllowAny, ))
 
-
 # View for user interface
-class WalletViewSet(viewsets.ModelViewSet):
+class CreditCardViewSet(viewsets.ModelViewSet):
 
     permission_classes = (IsAuthenticated,)
-    queryset = Wallet.objects.all()
-    serializer_class = WalletSerializer #Serelize data
+    queryset = CreditCard.objects.all()
+    serializer_class = CreditCardSerializer #Serelize data
 
 

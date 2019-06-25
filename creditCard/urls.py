@@ -10,14 +10,11 @@ from . import views
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r'wallet', views.WalletViewSet)
+router.register(r'creditcard', views.CreditCardViewSet)
 
-app_name = 'wallets'
+app_name = 'creditcard'
 
 urlpatterns = [
     # routes for user pages
     path('', include(router.urls)),
-
-    # routes for admin pages
-    # path('admin-wallets', views.AllInvoicesView.as_view(), name="admin-wallets"),
 ]

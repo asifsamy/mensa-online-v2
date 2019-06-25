@@ -41,6 +41,7 @@
 								</div>
 								<div  style="align-self:right;">
 									<p class="genric-btn primary circle text-uppercase" v-on:click="triggerFunction(menu.title,menu.description,menu.price_guest,menu.calories)">add to cart</p>
+									<!-- STACKOVERFLOW QUESTION -->
 									<!-- <p class="genric-btn primary circle text-uppercase" v-on:click="triggerFunction(me.title,me.description,me.price,me.calories)">add to cart</p> -->
 								</div>
 							</div>
@@ -62,12 +63,13 @@ import { mapMutations, mapActions } from 'vuex';
 export default {
     data () {
 		return {
-			me:{
-				title:"Hamburger",
-				description:"Something here",
-				price:"25",
-				calories:"10"
-			},
+			// STACKOVERFLOW QUESTION
+			// me:{
+			// 	title:"Hamburger",
+			// 	description:"Something here",
+			// 	price:"25",
+			// 	calories:"10"
+			// },
 			menus: [],
 			foodKey:"foodCategory",
 			foodCategories:["All Menu","Veg","Non-Veg","Salads","Fruits","Desserts","Beverages","Favorites"],
@@ -87,7 +89,6 @@ export default {
 			this.$store.state.order.qty = 1
 			this.$store.state.orders.push({...this.$store.state.order}),
 			console.log(this.$store.state.orders)
-
 		},
 
 		// STACKOVERFLOW QUESTION
@@ -99,8 +100,8 @@ export default {
 		fetchAllMenu(){
 			api.fetchMenu('get',null,null).then(res => {
 				this.menus = res.data
-				// Check the data from the console
-				// console.log(this.menus)
+				// Showing menu from console
+				console.log(this.menus)
 			}).catch((e) => {
 				console.log(e)
 			})

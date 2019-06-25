@@ -7,8 +7,8 @@ Import the class from serializer file
 
 """
 
-from wallets.models import Wallet
-from wallets.serializers import WalletSerializer
+from coupon.models import Coupon
+from coupon.serializers import CouponSerializer
 from rest_framework import viewsets
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated
@@ -19,12 +19,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # Allowing any user to access the view
 @permission_classes((AllowAny, ))
 
-
 # View for user interface
-class WalletViewSet(viewsets.ModelViewSet):
+class CouponViewSet(viewsets.ModelViewSet):
 
     permission_classes = (IsAuthenticated,)
-    queryset = Wallet.objects.all()
-    serializer_class = WalletSerializer #Serelize data
+    queryset = Coupon.objects.all()
+    serializer_class = CouponSerializer #Serelize data
 
 

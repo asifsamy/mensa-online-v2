@@ -40,6 +40,8 @@ urlpatterns = [
     path('orders/',include('orders.urls')),
     path('invoice/',include('invoices.urls')),
     path('wallet/',include('wallets.urls')),
+    path('coupon/',include('coupon.urls')),
+    path('creditcard/',include('creditCard.urls')),
     
 ]
 

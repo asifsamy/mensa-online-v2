@@ -7,17 +7,21 @@ export const store = new Vuex.Store({
     state:{
         order:{title:'',description:'',price:0,calories:0,qty:0},
         orders:[],
+        order_total:0,
+        balance:'',
     },
     getters:{
-        countOrders: state =>{
+        countOrders: state => {
 			return state.orders.length
-		}
+        },
+        
     },
     mutations:{
-        cleanOrders: state =>{
+        cleanOrders: state => {
 			while(state.orders.length){
 				state.orders.pop()
             }
+            return state.order_total = 0
         },
     },
     actions:{
