@@ -38,10 +38,10 @@
 							<br>
 							<div class="meta-bottom d-flex justify-content-between">
 								<div>
-									<!-- <label for="quantity">Quantity:NA</label> -->
 								</div>
 								<div  style="align-self:right;">
 									<p class="genric-btn primary circle text-uppercase" v-on:click="triggerFunction(menu.title,menu.description,menu.price_guest,menu.calories)">add to cart</p>
+									<!-- <p class="genric-btn primary circle text-uppercase" v-on:click="triggerFunction(me.title,me.description,me.price,me.calories)">add to cart</p> -->
 								</div>
 							</div>
 						</div>					                               
@@ -57,15 +57,22 @@
 
 // Import API
 import api from './api/index.js';
+import { mapMutations, mapActions } from 'vuex';
 
 export default {
     data () {
-    return {
-		menus: [],
-		foodKey:"foodCategory",
-		foodCategories:["All Menu","Veg","Non-Veg","Salads","Fruits","Desserts","Beverages","Favorites"],
-		filter: "All Menu",
-    }
+		return {
+			me:{
+				title:"Hamburger",
+				description:"Something here",
+				price:"25",
+				calories:"10"
+			},
+			menus: [],
+			foodKey:"foodCategory",
+			foodCategories:["All Menu","Veg","Non-Veg","Salads","Fruits","Desserts","Beverages","Favorites"],
+			filter: "All Menu",
+		}
   },
 	computed:{
 		
@@ -73,7 +80,6 @@ export default {
 	methods:{
 		// Method to pass data to another component
 		triggerFunction:function(title,description,price,calories){
-			this.quantity+=1,
 			this.$store.state.order.title = title,
 			this.$store.state.order.description = description,
 			this.$store.state.order.price = price,
@@ -83,6 +89,12 @@ export default {
 			console.log(this.$store.state.orders)
 
 		},
+
+		// STACKOVERFLOW QUESTION
+		// triggerFunction: function(title,description,price,calories){
+		// 	this.$store.dispatch('triggerFunction',title,description,price,calories)
+		// },
+
 		// Method to call data from Django
 		fetchAllMenu(){
 			api.fetchMenu('get',null,null).then(res => {
