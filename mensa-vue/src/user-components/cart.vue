@@ -59,7 +59,7 @@ export default {
 				update: "2019-06-27T10:16:26.486383Z",
 				customer: 1,
 				menu: [
-					1,2
+					1
 				]
 			}
 		}
