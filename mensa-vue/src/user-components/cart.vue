@@ -34,7 +34,8 @@
 					</div>
 					<div  style="align-self:right;">
 						<p class="genric-btn primary circle text-uppercase" v-on:click="checkout">Continue to checkout</p>
-						<button type="submit" v-on:click="submitOrder">Submit</button>
+						<!-- Button to test submit order -->
+						<button type="submit" v-on:click="submitOrder">Submit Order Test</button>
 					</div>
 				</div>
 			</div>
