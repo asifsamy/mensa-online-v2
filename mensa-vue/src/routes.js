@@ -5,6 +5,13 @@ import index from './user-components/index.vue'
 import test_api from './user-components/test_api.vue'
 import AppLayout from './user-components/AppLayout.vue'
 import cart from './user-components/cart.vue'
+import login from './user-components/login.vue'
+import singup from './user-components/singup.vue'
+import logout from './user-components/logout.vue'
+import settings from './user-components/settings.vue'
+import contact from './user-components/contact.vue'
+import about from './user-components/about.vue'
+import wallet from './user-components/wallet.vue'
 
 const routes = [
     // D2. Create the path object which will be used to call the component
@@ -33,6 +40,41 @@ const routes = [
                 name:'cart',
                 path:'cart',
                 component: cart,
+            },
+            {
+                name:'login',
+                path:'login',
+                component: login,
+            },
+            {
+                name:'singup',
+                path:'singup',
+                component: singup,
+            },
+            {
+                name:'logout',
+                path:'logout',
+                component: logout,
+            },
+            {
+                name:'settings',
+                path:'settings',
+                component: settings,
+            },
+            {
+                name:'contact',
+                path:'contact',
+                component: contact,
+            },
+            {
+                name:'about',
+                path:'about',
+                component: about,
+            },
+            {
+                name:'wallet',
+                path:'wallet',
+                component: wallet,
             },
             
         ]
