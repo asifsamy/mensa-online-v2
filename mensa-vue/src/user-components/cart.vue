@@ -34,6 +34,7 @@
 					</div>
 					<div  style="align-self:right;">
 						<p class="genric-btn primary circle text-uppercase" v-on:click="checkout">Continue to checkout</p>
+						<button type="submit" v-on:click="submitOrder">Submit</button>
 					</div>
 				</div>
 			</div>
@@ -43,11 +44,23 @@
 
 <script>
 import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
+import api from './api/index.js'
 
 export default {
 	data(){
 		return{
-			
+			temp:0,
+			rorders:'',
+			customOrder:{
+				id: 7,
+				status: "Pending",
+				timestamp: "2019-06-27T10:16:26.486383Z",
+				update: "2019-06-27T10:16:26.486383Z",
+				customer: 1,
+				menu: [
+					1,2
+				]
+			}
 		}
 	},
 	computed:{
@@ -70,19 +83,41 @@ export default {
 				console.log(this.$store.state.order_total)
 				this.$store.state.balance = this.$store.state.balance - parseFloat(this.$store.state.order_total)
 				if(this.$store.state.balance<0){
+					this.temp = 1
 					alert("You don't have enough balance."+"\nPlease Recharge")
-				}else if(this.$store.state.balance>0){
-					alert("Your actual balance is"+"\nPurchase complete")
 				}
-				
 			});
-			
+			if (this.temp == 0){
+				alert("Purchase complete")
+			}	
 		},
 		formatPrice(value) {
             let val = (value/1).toFixed(2).replace('.', '.')
             return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-        }
-  	}
+		},
+		submitOrder(){
+            api.fetchOrders('post',null, this.customOrder).then(res => {
+                this.msg = 'Saved'
+                console.log(this.customOrder)
+            }).catch((e) => {
+                this.msg = e.response
+                console.log(e)
+            },)
+		},
+		fetchAllOrders(){
+			api.fetchOrders('get',null,null).then(res => {
+				this.rorders = res.data
+				// Check the data from the console
+				console.log(this.rorders)
+			}).catch((e) => {
+				console.log(e)
+			})
+		},
+	  },
+	  	mounted(){
+			// fetch all notes once component is mounted
+			this.fetchAllOrders()
+		}
 }
 </script>
 

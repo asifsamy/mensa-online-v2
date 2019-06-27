@@ -22,12 +22,18 @@ export default{
             return ajax('http://localhost:8000/creditcard/creditcard/', 'get', {})
         }
     },
-    
     fetchWallet (method, params, data){
         if(method === 'post'){
             return ajax('http://localhost:8000/wallet/wallet/', method, {data})
         }else{
             return ajax('http://localhost:8000/wallet/wallet/', 'get', {})
+        }
+    },
+    fetchOrders (method, params, data){
+        if(method === 'post'){
+            return ajax('http://localhost:8000/orders/orders/', method, {data})
+        }else{
+            return ajax('http://localhost:8000/orders/orders/', 'get', {})
         }
     },
     fetchNotes (method, params, data){
