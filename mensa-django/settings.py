@@ -57,6 +57,8 @@ INSTALLED_APPS = [
     'testApp',
     'rest_framework',
     'corsheaders',
+    'coupon',
+    'creditCard',
 ]
 
 MIDDLEWARE = [

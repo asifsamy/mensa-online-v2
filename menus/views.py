@@ -22,6 +22,7 @@ from django.views.generic import (
     #DetailView,
 )
 from django.contrib.auth.mixins import LoginRequiredMixin
+from datetime import date
 
 # Allowing any user to access the view
 @permission_classes((AllowAny, ))
@@ -29,9 +30,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 # View for user interface
 class MenuViewSet(viewsets.ModelViewSet):
+    today = date.today()
 
     permission_classes = (IsAuthenticated,)
-    queryset = Menu.objects.all() #Select Menu
+    # queryset = Menu.objects.all() #Select Menu
+    queryset = Menu.objects.filter(day__year=today.year,
+                               day__month=today.month,
+                               day__day=today.day)
     serializer_class = MenuSerializer #Serelize data
 
 

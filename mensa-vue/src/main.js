@@ -6,7 +6,6 @@ import VueRouter from 'vue-router'
 import routes from './routes'
 import { store } from './store/store'
 
-
 Vue.use(VueHead)
 Vue.use(VueRouter)
 

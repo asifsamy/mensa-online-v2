@@ -7,6 +7,11 @@ verify_ssl = true
 
 [packages]
 django = "*"
+django-webpack-loader = "*"
+djangorestframework = "*"
+django-cors-headers = "*"
+django-crispy-forms = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.7"

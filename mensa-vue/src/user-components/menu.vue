@@ -19,7 +19,7 @@
 						{{foodCategory}}
 					</li>
 				</ul>
-				<div class="row grid">
+				<div class="row grid autoHeight">
 					<div 
 						class="col-md-6 all Veg" 
 						v-for="(menu, index) in menus" 
@@ -38,16 +38,16 @@
 							<br>
 							<div class="meta-bottom d-flex justify-content-between">
 								<div>
-									<!-- <label for="quantity">Quantity:NA</label> -->
 								</div>
 								<div  style="align-self:right;">
 									<p class="genric-btn primary circle text-uppercase" v-on:click="triggerFunction(menu.title,menu.description,menu.price_guest,menu.calories)">add to cart</p>
+									<!-- STACKOVERFLOW QUESTION -->
+									<!-- <p class="genric-btn primary circle text-uppercase" v-on:click="triggerFunction(me.title,me.description,me.price,me.calories)">add to cart</p> -->
 								</div>
 							</div>
 						</div>					                               
 					</div>		
 				</div>
-	
 			</div>
 		</section>
     </div>
@@ -58,24 +58,23 @@
 
 // Import API
 import api from './api/index.js';
+import { mapMutations, mapActions } from 'vuex';
 
 export default {
-	// created(){
-	// 	alert('created');
-	// },
-	// updated(){
-	// 	alert('updated');
-	// },
     data () {
-    return {
-		menus: [],
-		foodKey:"foodCategory",
-		foodCategories:["All Menu","Veg","Non-Veg","Salads","Fruits","Desserts","Beverages","Favorites"],
-		filter: "All Menu",
-	
-
-		
-    }
+		return {
+			// STACKOVERFLOW QUESTION
+			// me:{
+			// 	title:"Hamburger",
+			// 	description:"Something here",
+			// 	price:"25",
+			// 	calories:"10"
+			// },
+			menus: [],
+			foodKey:"foodCategory",
+			foodCategories:["All Menu","Veg","Non-Veg","Salads","Fruits","Desserts","Beverages","Favorites"],
+			filter: "All Menu",
+		}
   },
 	computed:{
 		
@@ -83,7 +82,6 @@ export default {
 	methods:{
 		// Method to pass data to another component
 		triggerFunction:function(title,description,price,calories){
-			this.quantity+=1,
 			this.$store.state.order.title = title,
 			this.$store.state.order.description = description,
 			this.$store.state.order.price = price,
@@ -91,14 +89,19 @@ export default {
 			this.$store.state.order.qty = 1
 			this.$store.state.orders.push({...this.$store.state.order}),
 			console.log(this.$store.state.orders)
-
 		},
+
+		// STACKOVERFLOW QUESTION
+		// triggerFunction: function(title,description,price,calories){
+		// 	this.$store.dispatch('triggerFunction',title,description,price,calories)
+		// },
+
 		// Method to call data from Django
 		fetchAllMenu(){
 			api.fetchMenu('get',null,null).then(res => {
 				this.menus = res.data
-				// Check the data from the console
-				// console.log(this.menus)
+				// Showing menu from console
+				console.log(this.menus)
 			}).catch((e) => {
 				console.log(e)
 			})
@@ -113,5 +116,7 @@ export default {
 </script>
 
 <style>
-
+.autoHeight{
+	height: auto !important;
+}
 </style>

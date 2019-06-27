@@ -24,7 +24,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class WalletViewSet(viewsets.ModelViewSet):
 
     permission_classes = (IsAuthenticated,)
-    queryset = Wallet.objects.all() #Select Menu
+    queryset = Wallet.objects.all()
     serializer_class = WalletSerializer #Serelize data
 
 
