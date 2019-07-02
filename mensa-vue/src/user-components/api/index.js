@@ -38,7 +38,7 @@ export default{
     },
     fetchNotes (method, params, data){
         if(method === 'post'){
-            return ajax('http://localhost:8000/notes/notes/', method, JSON.stringify({data}))
+            return ajax('http://localhost:8000/notes/notes/', method, {data})
         }else{
             return ajax('http://localhost:8000/notes/notes/', 'get', {})
         }

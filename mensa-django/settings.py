@@ -25,7 +25,7 @@ SECRET_KEY = '^&srb8v%fk3$(1zo)up3-v(uw+r7c!)f+0jgb+mp*l)a_r_5rv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Telling Django that we accept connections from everywhere
 CORS_ORIGIN_ALLOW_ALL = True

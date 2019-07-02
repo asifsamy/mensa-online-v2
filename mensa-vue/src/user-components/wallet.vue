@@ -7,7 +7,9 @@
                     <h3 class="mb-20">Balance</h3>
                     <p style="font-size:40px;" v-on:click="fetchWallet">$ {{formatPrice(balance)}}</p>
                     <p>Click your balance to update it.</p>
-                    <!-- <button v-on:click="submitWallet">Test Recharge</button> -->
+                    <button v-on:click="submitWallet">Test Recharge</button>
+            
+                    <p>{{msg}}</p>
                 </div>
             </div>
             <div class="col-md-6 col-sm-10 section-top-border">
@@ -65,10 +67,10 @@
 import api from './api/index.js';
 import { mapState } from 'vuex';
 
-
 export default {
     data(){
         return{
+
             coupons:[],
             creditcards:[],
             msg:'',
@@ -82,7 +84,13 @@ export default {
                 code:'',
             },
             formWallet:{
-                balance:0
+                id: 1,
+                wallet_number: "64283470177",
+                balance: "200.00",
+                status: "Active",
+                timestamp: "2019-06-17T09:47:38.368030Z",
+                update: "2019-06-25T19:42:50.166505Z",
+                customer: 1
             },
         }
     },
@@ -131,12 +139,13 @@ export default {
         fetchWallet(){
 			api.fetchWallet('get',null,null).then(res => {
                 this.wallets = res.data
+                console.log("Printing wallets with old method")
                 console.log(this.wallets)
+                
                 this.wallets.forEach(wallet => {
-                    // Go to "http://localhost:8000/wallet/wallet/1/" to update the balance manually
-                    // this.balance = wallet.balance
                     this.$store.state.balance = wallet.balance
-                    console.log(wallet.balance)
+                    // console.log(wallet.balance)
+
                     // Once the value write the function to below to update the balance
                     // ...
                     // this.balance = formWallet.balance
@@ -169,6 +178,7 @@ export default {
         this.fetchCoupon()
         this.fetchCreditcard()
         this.fetchWallet()
+
     },
 }
 </script>
