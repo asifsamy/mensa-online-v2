@@ -40,7 +40,7 @@
 								<div>
 								</div>
 								<div  style="align-self:right;">
-									<p class="genric-btn primary circle text-uppercase" v-on:click="triggerFunction(menu.title,menu.description,menu.price_guest,menu.calories)">add to cart</p>
+									<p class="genric-btn primary circle text-uppercase" v-on:click="triggerFunction(menu.id,menu.title,menu.description,menu.price_guest,menu.calories)">add to cart</p>
 								</div>
 							</div>
 						</div>					                               
@@ -49,14 +49,10 @@
 			</div>
 		</section>
     </div>
-    
 </template>
 
 <script>
-
-// Import API
 import api from './api/index.js';
-import { mapMutations, mapActions } from 'vuex';
 
 export default {
     data () {
@@ -72,9 +68,10 @@ export default {
 		
 	},
 	methods:{
-		// 
-		triggerFunction: function(title,description,price,calories){
+		// Vuex
+		triggerFunction: function(id,title,description,price,calories){
 			this.$store.dispatch('triggerFunction', {
+				id: id,
 				title: title,
 				description: description,
 				price: price,
@@ -86,7 +83,7 @@ export default {
 			api.fetchMenu('get',null,null).then(res => {
 				this.menus = res.data
 				// Showing menu from console
-				console.log(this.menus)
+				// console.log(this.menus)
 			}).catch((e) => {
 				console.log(e)
 			})

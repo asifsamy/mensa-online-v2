@@ -1,15 +1,16 @@
 <template>
     <div class="whole-wrap">       
 		<div class="container section-top-border" style="padding-left:100px; padding-right:100px;">
+            <div class="row">
             <div class="col-md-6 col-sm-10 section-top-border">
                 <h1 class="typo-list">Wallet</h1>
                 <div style="padding-top:10px;">
                     <h3 class="mb-20">Balance</h3>
                     <p style="font-size:40px;" v-on:click="fetchWallet">$ {{formatPrice(balance)}}</p>
                     <p>Click your balance to update it.</p>
-                    <button v-on:click="submitWallet">Test Recharge</button>
-            
-                    <p>{{msg}}</p>
+
+                    <!-- <p>{{msg}}</p> -->
+
                 </div>
             </div>
             <div class="col-md-6 col-sm-10 section-top-border">
@@ -59,13 +60,14 @@
                     </div>
                 </div>
 		    </div>
+            </div>
 		</div>
 	</div>
 </template>
 
 <script>
 import api from './api/index.js';
-import { mapState } from 'vuex';
+import { mapState, mapActions, mapGetters } from 'vuex';
 
 export default {
     data(){
@@ -74,8 +76,8 @@ export default {
             coupons:[],
             creditcards:[],
             msg:'',
+            bal:0,
 
-            // balance:0,
             insertedCoupon:'',
             insertedCard:{
                 name:'',
@@ -84,44 +86,58 @@ export default {
                 code:'',
             },
             formWallet:{
-                id: 1,
                 wallet_number: "64283470177",
-                balance: "200.00",
-                status: "Active",
-                timestamp: "2019-06-17T09:47:38.368030Z",
-                update: "2019-06-25T19:42:50.166505Z",
+                balance: 0,
                 customer: 1
             },
         }
     },
     methods:{
-        // Coupon
+        // ######################## Coupon ########################
         submitCoupon(){
             this.coupons.forEach(coupon => {
-               console.log(coupon.number) 
-               if(coupon.number == this.insertedCoupon){
-                   alert('Coupon confirmed!')
-                   this.insertedCoupon = ''
-               }else{
-                  alert('Coupon invalid!') 
-               }
+                console.log(coupon.number) 
+                if(coupon.number == this.insertedCoupon){
+                    alert('Coupon confirmed!'+"\n"+"You've got 10 credits extra")
+                    this.insertedCoupon = ''
+                    this.formWallet.balance = parseFloat(this.$store.state.balance) + parseFloat(10)
+                    console.log(this.formWallet.balance)
+                    api.fetchWallet('post',null, this.formWallet).then(res => {
+                        this.msg = 'Credit added.'
+                        console.log(this.formWallet)
+                    }).catch((e) => {
+                        this.msg = e.response
+                        console.log(e)
+                    },)
+                }else{
+                    alert('Coupon invalid!') 
+                }
             });
         },
         fetchCoupon(){
 			api.fetchCoupon('get',null,null).then(res => {
                 this.coupons = res.data
-                console.log(this.coupons)
+                // console.log(this.coupons)
 			}).catch((e) => {
 				console.log(e)
 			})
         },
-        // Credit card
+        // ######################## Credit card ########################
         submitCreditcard(){
             this.creditcards.forEach(creditcard => {
                console.log(creditcard.cc_number,creditcard.cc_name,creditcard.cc_valid_date,creditcard.cc_code)       
                if(creditcard.cc_number == this.insertedCard.number && creditcard.cc_name == this.insertedCard.name && creditcard.cc_valid_date == this.insertedCard.valid_date && creditcard.cc_code == this.insertedCard.code){
                    alert('Credit submitted!') 
                    this.insertedCard = ''
+                    this.formWallet.balance = parseFloat(this.$store.state.balance) + parseFloat(this.formWallet.balance)
+                    console.log(this.formWallet.balance)
+                    api.fetchWallet('post',null, this.formWallet).then(res => {
+                        this.msg = 'Credit added.'
+                        console.log(this.formWallet)
+                    }).catch((e) => {
+                        this.msg = e.response
+                        console.log(e)
+                    },)
                }else{
                   alert('Credit card is not valid!') 
                }
@@ -130,25 +146,18 @@ export default {
         fetchCreditcard(){
 			api.fetchCreditcard('get',null,null).then(res => {
                 this.creditcards = res.data
-                console.log(this.creditcards)
+                // console.log(this.creditcards)
 			}).catch((e) => {
 				console.log(e)
 			})
         },
-        // Wallet
+        // ######################## Wallet ########################
         fetchWallet(){
 			api.fetchWallet('get',null,null).then(res => {
                 this.wallets = res.data
-                console.log("Printing wallets with old method")
-                console.log(this.wallets)
-                
+                // console.log(this.wallets)
                 this.wallets.forEach(wallet => {
                     this.$store.state.balance = wallet.balance
-                    // console.log(wallet.balance)
-
-                    // Once the value write the function to below to update the balance
-                    // ...
-                    // this.balance = formWallet.balance
             })
 			}).catch((e) => {
 				console.log(e)
@@ -156,13 +165,14 @@ export default {
         },
         submitWallet(){
             api.fetchWallet('post',null, this.formWallet).then(res => {
-                this.msg = 'Saved'
+                this.msg = 'Credit added.'
                 console.log(this.formWallet)
             }).catch((e) => {
                 this.msg = e.response
                 console.log(e)
             },)
         },
+        // ######################## Ohters ########################
         formatPrice(value) {
             let val = (value/1).toFixed(2).replace('.', '.')
             return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
@@ -171,8 +181,9 @@ export default {
     },
     computed:{
         ...mapState([
-            'balance'
-        ])
+            'balance',
+            
+        ]),
     },
     mounted(){
         this.fetchCoupon()
